@@ -1,0 +1,127 @@
+{ "slides": [
+  {
+    "src": "/slides/patrick.jpg",
+    "alt": "1",
+    "style": "patrick",
+    "buttonsPosition": {
+      "top": "132rem",
+      "right": "83rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-1-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-1-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/orc.jpg",
+    "alt": "1",
+    "style": "dark",
+    "buttonsPosition": {
+      "top": "102rem",
+      "right": "-54rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-1-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-1-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/groot.jpg",
+    "alt": "2",
+    "style": "dark",
+    "buttonsPosition": {
+      "top": "64rem",
+      "right": "64rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-2-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-2-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/iron-man.jpg",
+    "alt": "3",
+    "style": "light-red",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-223rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/storm.jpg",
+    "alt": "3",
+    "style": "blue",
+    "buttonsPosition": {
+      "top": "0",
+      "right": "-130rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/jason.jpg",
+    "alt": "3",
+    "buttonsPosition": {
+      "top": "20rem",
+      "right": "30rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  }
+]}

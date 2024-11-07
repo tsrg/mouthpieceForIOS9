@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Demoness head2",
+      "img": "/products/demoness_head.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "2",
+      "name": "Jason",
+      "img": "/products/jason.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "3",
+      "name": "ORC",
+      "img": "/products/orc.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "4",
+      "name": "Stormtrooper",
+      "img": "/products/stormtrooper.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "5",
+      "name": "Zombie",
+      "img": "/products/zombie.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "6",
+      "name": "Zombie captain america",
+      "img": "/products/zombie_captain_america.jpg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "7",
+      "name": "Orc 2",
+      "img": "/products/orc2.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "8",
+      "name": "Jason 2",
+      "img": "/products/jason-2.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "9",
+      "name": "Patrick",
+      "img": "/products/patrick.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "10",
+      "name": "Blue zombie",
+      "img": "/products/blue-zombie.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "11",
+      "name": "Jason 3",
+      "img": "/products/jason-3.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "12",
+      "name": "Skull",
+      "img": "/products/skull.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "13",
+      "name": "Zombie cap",
+      "img": "/products/zombie-ca2.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "14",
+      "name": "Zombie cap 2",
+      "img": "/products/zombie-ca3.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    },
+    {
+      "id": "15",
+      "name": "Demoness head 2",
+      "img": "/products/demoness-head-3.jpeg",
+      "price": {
+        "current": 50,
+        "old": 50
+      }
+    }
+  ]
+}

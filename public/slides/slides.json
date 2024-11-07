@@ -1,0 +1,65 @@
+{ "slides": [
+  {
+    "src": "/slides/orc1.jpg",
+    "alt": "1",
+    "style": "dark",
+    "buttonsPosition": {
+      "top": "102rem",
+      "right": "-140rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-1-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-1-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/groot3.jpg",
+    "alt": "2",
+    "style": "dark",
+    "buttonsPosition": {
+      "top": "64rem",
+      "right": "-140rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-2-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-2-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/iron-man1.jpg",
+    "alt": "3",
+    "style": "light-red",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-80rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form"
+      }
+    ]
+  }
+]}
