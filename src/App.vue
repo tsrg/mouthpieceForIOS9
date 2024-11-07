@@ -29,8 +29,6 @@ import MainSlider2 from './components/MainSlider2.vue'
 import TheCatalog from './components/TheCatalog.vue'
 import MainForm from './components/MainForm.vue'
 
-// import debounce from 'lodash/debounce'
-
 const defaultVisibleProductsCount = 6
 
 export default {

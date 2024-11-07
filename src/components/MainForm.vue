@@ -11,7 +11,6 @@
           class="form__form"
           @submit.prevent="handleSubmit"
         >
-          <span class="form__title">Заполните поля</span>
           <div class="form__input-wrapper">
             <ValidationProvider rules="required" v-slot="{ errors, invalid, untouched }">
               <input
@@ -26,6 +25,18 @@
               />
             <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
+          </div>
+          <div class="form__input-wrapper">
+            <input
+                ref="instagram"
+                v-model="instagram"
+                type="text"
+                placeholder="Instagram"
+                autocomplete="off"
+                class="form__input"
+                @focus="focusHandler"
+            />
+            <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
           </div>
           <div class="form__input-wrapper">
             <ValidationProvider rules="required" v-slot="{ errors, invalid, untouched }">
@@ -45,19 +56,6 @@
           </div>
           <div class="form__input-wrapper">
             <input
-              ref="instagram"
-              v-model="instagram"
-              type="text"
-              placeholder="Instagram"
-              autocomplete="off"
-              class="form__input"
-              @focus="focusHandler"
-            />
-    <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
-          </div>
-          <div class="form__input-wrapper">
-            <span class="form__hint">Введите промокод для получения скидки. Промокод можно узнать у продавца точки на которой оформляете заказ.</span>
-            <input
               ref="promocode"
               v-model="promoCode"
               type="text"
@@ -68,7 +66,10 @@
             />
     <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
           </div>
-          <button class="form__submit-button" :disabled="invalid" type="submit">{{ buttonText }}</button>
+          <div class="form__submit-button-wr">
+            <button class="form__submit-button" :disabled="invalid" type="submit">{{ buttonText }}</button>
+          </div>
+          <span class="form__hint">Введите промокод для получения скидки. Промокод можно узнать у продавца точки на которой оформляете заказ.</span>
         </form>
       </ValidationObserver>
       <div
@@ -196,24 +197,22 @@ export default {
 <style lang="scss">
 .form {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   height: 82vh;
   margin-top: 20rem;
-  margin-bottom: 200rem;
+  margin-bottom: 240rem;
 }
 
 .form__wr {
-  width: 50%;
+  width: 100%;
 }
 
 .form__form {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
-  padding: 24rem;
+  padding: 48rem 36rem;
   font-size: 18rem;
   color: #e6e6e6;
   background-color: #1c1c1c;
@@ -227,7 +226,7 @@ export default {
   flex-wrap: wrap;
   border-radius: 26rem;
   overflow: hidden;
-  margin: auto 68rem;
+  margin: 80rem 68rem;
 }
 
 .form__title {
@@ -261,7 +260,7 @@ export default {
 
 .form__input-wrapper {
   position: relative;
-  width: 80%;
+  width: 45%;
 }
 
 .form__input {
@@ -293,13 +292,19 @@ export default {
   max-width: 100%;
 }
 
+.form__submit-button-wr {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
+
 .form__submit-button {
   background-color: #37c106;
   color: white;
   border: none;
   border-radius: 12rem;
   padding: 20rem 68rem;
-  margin: 20rem 0 30rem;
+  margin: 20rem auto 30rem;
   font-size: 28rem;
 }
 
@@ -315,10 +320,13 @@ export default {
 }
 
 .form__hint {
+  width: 45%;
   display: block;
   color: #f4f4f4;
-  font-size: 36rem;
+  font-size: 22rem;
   margin-bottom: 20rem;
+  padding-right: 60rem;
+  padding-left: 30rem;
 }
 
 .form__selected-product {
