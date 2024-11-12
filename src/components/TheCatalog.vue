@@ -63,7 +63,7 @@ export default {
 .catalog__header {
   width: 100%;
   font-size: 64rem;
-  padding-bottom: 20rem;
+  padding: 40rem 0 20rem;
   text-align: center;
   color: white;
 }

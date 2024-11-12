@@ -21,35 +21,35 @@
                 autocomplete="off"
                 class="form__input"
                 :class="{ 'form__input--invalid': invalid && !untouched }"
-                @focus="focusHandler"
               />
             <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
           </div>
           <div class="form__input-wrapper">
-            <input
-                ref="instagram"
-                v-model="instagram"
-                type="text"
-                placeholder="Instagram"
-                autocomplete="off"
-                class="form__input"
-                @focus="focusHandler"
-            />
-            <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
+            <ValidationProvider rules="required" v-slot="{ errors, invalid, untouched }">
+              <input
+                  ref="instagram"
+                  v-model="instagram"
+                  type="text"
+                  placeholder="Instagram"
+                  autocomplete="off"
+                  class="form__input"
+                  :class="{ 'form__input--invalid': invalid && !untouched }"
+              />
+              <div class="form__input-error">{{ errors[0] }}</div>
+            </ValidationProvider>
           </div>
-          <div class="form__input-wrapper">
+          <div class="form__input-wrapper form__input-wrapper--phone">
             <ValidationProvider rules="required" v-slot="{ errors, invalid, untouched }">
               <input
                 ref="phone"
-                v-maska:unmaskedValue.phone="'+375 (##) ###-##-##'"
+                v-maska:unmaskedValue.phone="'(##) ###-##-##'"
                 v-model="maskedPhone"
                 type="tel"
                 placeholder="Номер телефона"
                 autocomplete="off"
-                class="form__input"
+                class="form__input form__input--phone"
                 :class="{ 'form__input--invalid': invalid && !untouched }"
-                @focus="focusHandler"
               />
               <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -62,7 +62,6 @@
               placeholder="Промокод"
               autocomplete="off"
               class="form__input"
-              @focus="focusHandler"
             />
     <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
           </div>
@@ -72,19 +71,19 @@
           <span class="form__hint">Введите промокод для получения скидки. Промокод можно узнать у продавца точки на которой оформляете заказ.</span>
         </form>
       </ValidationObserver>
-      <div
+    </div>
+    <div
         class="form__selected-product"
         :style="`background-image: url(${productPhoto})`"
-      >
-        <transition name="fade">
-          <template v-if="selectedProduct?.name">
-            <div class="form__selected-model">
-              Модель: {{ selectedProduct.name }}
-              <button class="form__clear-select-button" @click="$emit('product:remove')">x</button>
-            </div>
-          </template>
-        </transition>
-      </div>
+    >
+      <transition name="fade">
+        <template v-if="selectedProduct?.name">
+          <div class="form__selected-model">
+            Модель: {{ selectedProduct.name }}
+            <button class="form__clear-select-button" @click="$emit('product:remove')">x</button>
+          </div>
+        </template>
+      </transition>
     </div>
   </div>
 </template>
@@ -124,9 +123,11 @@ export default {
   },
   mounted () {
     this.$bus.$on('reset', this.globalResetHandler)
+    this.$bus.$on('focusName', this.focusOnName)
   },
   beforeDestroy() {
     this.$bus.$off('reset', this.globalResetHandler)
+    this.$bus.$off('focusName', this.focusOnName)
   },
   computed: {
     buttonText () {
@@ -135,7 +136,7 @@ export default {
     values () {
       return {
         name: this.name,
-        phone: this.phone,
+        phone: '+375' + this.maskedPhone,
         instagram: this.instagram,
         promoCode: this.promoCode
       }
@@ -145,14 +146,13 @@ export default {
     }
   },
   methods: {
+    focusOnName () {
+      this.$refs.name.focus()
+    },
     globalResetHandler () {
       this.resetFocus()
       this.resetForm()
       this.$refs.form.reset()
-    },
-    focusHandler (event) {
-      event.preventDefault()
-      event.srcElement.scrollIntoView({ block: 'center', behavior: 'smooth' })
     },
     resetFocus () {
       const inputs = document.querySelectorAll('.form__input')
@@ -198,9 +198,9 @@ export default {
 .form {
   display: flex;
   flex-direction: column;
-  height: 82vh;
+  height: 100vh;
   margin-top: 20rem;
-  margin-bottom: 240rem;
+  margin-bottom: 20rem;
 }
 
 .form__wr {
@@ -242,40 +242,57 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 16rem;
-  font-size: 32rem;
+  font-size: 24rem;
   color: #ffffff;
 }
 
 .form__clear-select-button {
   position: absolute;
-  top: 46%;
+  top: 42%;
   right: -80rem;
   transform: translateY(-50%);
   border: none;
   color: red;
   cursor: pointer;
   background-color: transparent;
-  font-size: 38rem;
+  font-size: 24rem;
 }
 
 .form__input-wrapper {
   position: relative;
   width: 45%;
+  margin-bottom: 32rem;
+}
+
+.form__input-wrapper--phone::after {
+  content: '+375';
+  position: absolute;
+  left: 28rem;
+  top: 51%;
+  transform: translateY(-50%);
+  font-size: 30rem;
+  line-height: 1;
+  color: var(--vt-c-black-soft);
+  z-index: 2;
 }
 
 .form__input {
   border-radius: 50rem;
-  border: none;
+  border: 1px solid transparent;
   font-size: 32rem;
   color: var(--vt-c-black-soft);
   background-color: rgba(253, 253, 253, 0.9);
   padding: 16rem 46rem;
-  margin-bottom: 32rem;
   width: 100%;
 }
 
+.form__input--phone {
+  position: relative;
+  padding-left: 110rem;
+}
+
 .form__input--invalid {
-  border: 1px solid red;
+  border-color: red;
 }
 
 .form__input::placeholder {
@@ -284,7 +301,7 @@ export default {
 
 .form__input-error {
   position: absolute;
-  bottom: 0rem;
+  bottom: -32rem;
   left: 18rem;
   font-size: 22rem;
   text-align: left;
@@ -313,6 +330,7 @@ export default {
 }
 
 .form__header {
+  padding-top: 20rem;
   width: 100%;
   font-size: 64rem;
   text-align: center;
@@ -324,15 +342,18 @@ export default {
   display: block;
   color: #f4f4f4;
   font-size: 22rem;
-  margin-bottom: 20rem;
+  margin-bottom: 53rem;
   padding-right: 60rem;
   padding-left: 30rem;
 }
 
 .form__selected-product {
   position: relative;
-  width: 50%;
-  min-height: 100%;
+  overflow: hidden;
+  width: 25%;
+  height: 40%;
+  margin: 0 auto;
+  border-radius: 10rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

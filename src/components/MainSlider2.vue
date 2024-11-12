@@ -1,4 +1,5 @@
 <template>
+  <div class="main-slider">
     <hooper
       ref="slider"
       class="main-slider__slider"
@@ -37,6 +38,7 @@
         </div>
       </slide>
     </hooper>
+  </div>
 </template>
 
 <script>
@@ -69,6 +71,10 @@ export default {
 </script>
 
 <style lang="scss">
+.main-slider {
+  min-height: 100vh;
+}
+
 .main-slider__img {
   width: 100%;
 }
@@ -97,10 +103,6 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 10rem;
-
-  .main-slider__slide--patrick & {
-    flex-direction: row;
-  }
 }
 
 .main-slider__button {
@@ -112,14 +114,10 @@ export default {
   line-height: 1;
 
   .main-slider__slide--patrick & {
-    padding: 12rem 36rem;
+    padding: 24rem 64rem;
     border: none;
     color: #9b09d1;
     background-color: white;
-    border-radius: 24rem;
-    font-size: 24rem;
-    font-weight: 600;
-    line-height: 1;
   }
 
   .main-slider__slide--dark & {

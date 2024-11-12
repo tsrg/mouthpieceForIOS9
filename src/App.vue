@@ -72,6 +72,7 @@ export default {
     selectProductHandler (modelName) {
       this.selectedProduct = modelName
       this.$refs.form?.$el?.scrollIntoView({behavior: 'smooth'})
+      this.$bus.$emit('focusName')
       this.setScrollTimer(120000)
     },
     removeProductHandler () {
@@ -128,10 +129,15 @@ export default {
       }
 
       const section = button.link ? document.querySelector(button.link) : null
+      const formId = '#form'
 
       if (section) {
         section.scrollIntoView({behavior: 'smooth'})
         this.setScrollTimer(60000)
+      }
+
+      if (button.link === formId) {
+        this.$bus.$emit('focusName')
       }
     }
   }
