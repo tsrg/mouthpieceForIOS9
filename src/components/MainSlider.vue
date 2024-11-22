@@ -86,6 +86,8 @@ import 'swiper/dist/css/swiper.css'
 </script>
 
 <style lang="scss">
+
+
 .main-slider__img {
   width: 100%;
   height: auto;

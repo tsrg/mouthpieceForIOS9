@@ -50,7 +50,7 @@ export default {
 .catalog {
   display: flex;
   flex-wrap: wrap;
-  margin: 40rem 28rem;
+  margin: 40rem 28rem 90rem;
 }
 
 .catalog_product {

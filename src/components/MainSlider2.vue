@@ -31,6 +31,7 @@
                 :key="button.id"
                 @click.prevent="buttonClickHandler(button)"
                 class="main-slider__button"
+                :class="{ 'main-slider__button--buy': button.text === 'Заказать' }"
             >
               {{ button.text }}
             </button>
@@ -56,15 +57,28 @@ export default {
   },
   watch: {
     slides: function () {
-      this.$refs.slider.update()
+      this.$refs?.slider?.update()
     }
   },
   mounted() {
-    requestAnimationFrame(() => {this.$refs.slider.update()})
+    requestAnimationFrame(() => {this.$refs?.slider?.update()})
+    this.$bus.$on('reset', this.updateSlider)
+  },
+  beforeDestroy() {
+    this.$bus.$off('reset', this.updateSlider)
   },
   methods: {
     buttonClickHandler (button) {
       this.$emit('button:click', button)
+    },
+    updateSlider () {
+      console.log('updateSlider')
+      console.log(this.$refs.slider)
+      this.$refs.slider.slideTo(0)
+      this.$refs.slider.restart()
+      this.$refs.slider.restartTimer()
+      this.$refs.slider.initAutoPlay()
+      this.$refs.slider.update()
     }
   }
 }
@@ -107,11 +121,13 @@ export default {
 
 .main-slider__button {
   margin: 10rem;
-  padding: 22rem 48rem;
-  border: 2rem solid hsla(160, 100%, 37%, 1);
+  padding: 22rem 78rem;
+  border: 2rem solid #eaa8a8;
+  line-height: 1;
+  background-color: #ffffff;
+  color: #f84a4a;
   border-radius: 14rem;
   font-size: 36rem;
-  line-height: 1;
 
   .main-slider__slide--patrick & {
     padding: 24rem 64rem;
@@ -217,6 +233,4 @@ export default {
   width: 100%;
   float: left;
 }
-
-
 </style>

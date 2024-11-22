@@ -53,9 +53,11 @@ export default {
   },
   mounted() {
     document.addEventListener('scroll', this.scrollHandler)
+    this.$bus.$on('resetTimer', this.scrollHandler)
   },
   beforeDestroy() {
     document.addEventListener('scroll', this.scrollHandler)
+    this.$bus.$off('resetTimer', this.scrollHandler)
   },
   computed: {
     productsCount () {
@@ -118,9 +120,11 @@ export default {
       }, time)
     },
     resetState () {
-      this.$bus.$emit('reset')
+      clearTimeout(this.scrollTimer)
+      this.scrollTimer = null
       this.selectedProduct = {}
       this.visibleProductsCount = defaultVisibleProductsCount
+      this.$bus.$emit('reset')
     },
     sliderButtonClickHandler (button) {
       if (button.goalId) {

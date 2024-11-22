@@ -21,6 +21,7 @@
                 autocomplete="off"
                 class="form__input"
                 :class="{ 'form__input--invalid': invalid && !untouched }"
+                @input="inputHandler"
               />
             <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -35,6 +36,7 @@
                   autocomplete="off"
                   class="form__input"
                   :class="{ 'form__input--invalid': invalid && !untouched }"
+                  @input="inputHandler"
               />
               <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -50,6 +52,7 @@
                 autocomplete="off"
                 class="form__input form__input--phone"
                 :class="{ 'form__input--invalid': invalid && !untouched }"
+                @input="inputHandler"
               />
               <div class="form__input-error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -62,6 +65,7 @@
               placeholder="Промокод"
               autocomplete="off"
               class="form__input"
+              @input="inputHandler"
             />
     <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
           </div>
@@ -85,6 +89,19 @@
         </template>
       </transition>
     </div>
+    <section class="advantages">
+      <div
+        v-for="advantage in advantages"
+        :key="advantage.icon"
+        class="advantage"
+      >
+        <img
+          :src="advantage.icon"
+          class="advantage__icon"
+        />
+        <span class="advantage__text">{{ advantage.text }}</span>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -92,6 +109,21 @@
 import { vMaska } from "maska/vue"
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required } from 'vee-validate/dist/rules';
+
+const advantages = [
+  {
+    icon: '/hm-2.png',
+    text: 'Ручная работа'
+  },
+  {
+    icon: '/individual-2.png',
+    text: 'Уникальный дизайн'
+  },
+  {
+    icon: '/iz-2.png',
+    text: 'Индивидуальный заказ'
+  }
+]
 
 extend('required', {
   ...required,
@@ -121,6 +153,9 @@ export default {
       type: Object
     }
   },
+  created() {
+    this.advantages = advantages
+  },
   mounted () {
     this.$bus.$on('reset', this.globalResetHandler)
     this.$bus.$on('focusName', this.focusOnName)
@@ -146,6 +181,9 @@ export default {
     }
   },
   methods: {
+    inputHandler () {
+      this.$bus.$emit('resetTimer')
+    },
     focusOnName () {
       this.$refs.name.focus()
     },
@@ -197,10 +235,11 @@ export default {
 <style lang="scss">
 .form {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
   margin-top: 20rem;
-  margin-bottom: 20rem;
+  margin-bottom: 200rem;
 }
 
 .form__wr {
@@ -223,15 +262,16 @@ export default {
 .form__body {
   display: flex;
   position: relative;
+  width: 70%;
   flex-wrap: wrap;
   border-radius: 26rem;
   overflow: hidden;
-  margin: 80rem 68rem;
+  padding: 20rem 0 120rem
 }
 
 .form__title {
   font-size: 36rem;
-  margin-bottom: 32rem;
+  margin-bottom: 62rem;
   text-align: center;
   color: #e6e6e6;
 }
@@ -331,6 +371,7 @@ export default {
 
 .form__header {
   padding-top: 20rem;
+  padding-bottom: 20rem;
   width: 100%;
   font-size: 64rem;
   text-align: center;
@@ -351,11 +392,36 @@ export default {
   position: relative;
   overflow: hidden;
   width: 25%;
-  height: 40%;
-  margin: 0 auto;
+  height: 462rem;
+  margin-top: 20rem;
   border-radius: 10rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.advantages {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+}
+
+.advantage {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.advantage__icon {
+  width: 300rem;
+  height: 300rem;
+}
+
+.advantage__text {
+  width: 100%;
+  font-size: 38rem;
+  font-weight: 200;
+  text-align: center;
+  color: white;
 }
 </style>
