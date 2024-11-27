@@ -112,15 +112,15 @@ import { required } from 'vee-validate/dist/rules';
 
 const advantages = [
   {
-    icon: '/hm-2.png',
+    icon: '/handmd.png',
     text: 'Ручная работа'
   },
   {
-    icon: '/individual-2.png',
+    icon: '/des.png',
     text: 'Уникальный дизайн'
   },
   {
-    icon: '/iz-2.png',
+    icon: '/ordr.png',
     text: 'Индивидуальный заказ'
   }
 ]

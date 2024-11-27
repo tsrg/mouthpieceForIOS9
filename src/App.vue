@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <MainSlider2
+      <MainSlider3
           id="slider"
           :slides="slides"
           @button:click="sliderButtonClickHandler"
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import MainSlider2 from './components/MainSlider2.vue'
+import MainSlider3 from './components/MainSlider3.vue'
 import TheCatalog from './components/TheCatalog.vue'
 import MainForm from './components/MainForm.vue'
 
@@ -34,7 +34,7 @@ const defaultVisibleProductsCount = 6
 export default {
   name: 'App',
   components: {
-    MainSlider2,
+    MainSlider3,
     TheCatalog,
     MainForm
   },

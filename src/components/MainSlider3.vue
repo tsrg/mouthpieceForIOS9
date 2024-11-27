@@ -1,15 +1,13 @@
 <template>
   <div class="main-slider">
-    <hooper
+    <carousel
       ref="slider"
       class="main-slider__slider"
-      :autoPlay="true"
-      :playSpeed="7000"
-      :infiniteScroll="true"
-      :wheelControl="false"
-      :transition="600"
+      :auto="7000"
+      :watch-items="slides"
+      :loop="true"
     >
-      <slide
+      <carousel-item
         v-for="(slide, index) in slides"
         :key="slide.src"
         :index="index"
@@ -32,59 +30,43 @@
                 @click.prevent="buttonClickHandler(button)"
                 class="main-slider__button"
                 :class="{ 'main-slider__button--buy': button.text === 'Заказать' }"
-            ><img src="../../../Downloads/handmd.png" height="300" width="300"/>
+            >
               {{ button.text }}
             </button>
           </div>
         </div>
-      </slide>
-    </hooper>
+      </carousel-item>
+    </carousel>
   </div>
 </template>
 
 <script>
-import { Hooper, Slide } from 'hooper';
+import { Carousel, CarouselItem } from 'vue-l-carousel'
 import 'hooper/dist/hooper.css';
 
 export default {
   name: 'MainSlider2',
   components: {
-    Hooper,
-    Slide
+    Carousel,
+    CarouselItem
   },
   props: {
     slides: Array
   },
-  watch: {
-    slides: function () {
-      this.$refs?.slider?.update()
-    }
-  },
-  mounted() {
-    requestAnimationFrame(() => {this.$refs?.slider?.update()})
-    this.$bus.$on('reset', this.updateSlider)
-  },
-  beforeDestroy() {
-    this.$bus.$off('reset', this.updateSlider)
-  },
   methods: {
     buttonClickHandler (button) {
       this.$emit('button:click', button)
-    },
-    updateSlider () {
-      console.log('updateSlider')
-      console.log(this.$refs.slider)
-      this.$refs.slider.slideTo(0)
-      this.$refs.slider.restart()
-      this.$refs.slider.restartTimer()
-      this.$refs.slider.initAutoPlay()
-      this.$refs.slider.update()
     }
   }
 }
-<img src="../../../Downloads/des.png" height="300" width="300"/></script>
+</script>
 
 <style lang="scss">
+.v-carousel-nav,
+.v-carousel-dots {
+  display: none;
+}
+
 .main-slider {
   min-height: 100vh;
 }
@@ -132,8 +114,14 @@ export default {
   .main-slider__slide--patrick & {
     padding: 24rem 64rem;
     border: none;
-    color: #9b09d1;
+    color: #e469b7;
     background-color: white;
+
+    &:last-child {
+      color: white;
+      background-color: #e469b7;
+      box-shadow: #e469b7 2px 2px 11px 3px;
+    }
   }
 
   .main-slider__slide--dark & {
@@ -143,6 +131,12 @@ export default {
     background-color: #353535;
     color: white;
     min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: green;
+      box-shadow: green 2px 2px 11px 3px;
+    }
   }
 
   .main-slider__slide--light-red & {
@@ -152,6 +146,13 @@ export default {
     background-color: #ffffff;
     color: #f84a4a;
     min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #da0e0e;
+      border: none;
+      box-shadow: #da0e0e 2px 2px 11px 3px;
+    }
   }
 
   .main-slider__slide--blue & {
@@ -161,6 +162,27 @@ export default {
     background-color: #ffffff;
     color: #0a1943;
     min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #054daf;
+      box-shadow: #054daf 2px 2px 11px 3px;
+    }
+  }
+
+  .main-slider__slide--yellow & {
+    border-radius: 14rem;
+    border: 2rem solid #fa780e;
+    line-height: 1;
+    background-color: #ffffff;
+    color: #fa780e;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #fa780e;
+      box-shadow: #fa780e 2px 2px 11px 3px;
+    }
   }
 }
 

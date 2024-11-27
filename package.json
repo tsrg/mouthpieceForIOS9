@@ -17,6 +17,7 @@
     "maska": "^3.0.3",
     "vee-validate": "3.4.13",
     "vue": "^2.7.14",
+    "vue-l-carousel": "^1.1.0",
     "vue-toastification": "^1.7.14"
   },
   "devDependencies": {

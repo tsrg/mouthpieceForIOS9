@@ -65,7 +65,7 @@
 {
     "src": "/slides/storm1.jpg",
     "alt": "1",
-    "style": "blue",
+    "style": "yellow",
     "buttonsPosition": {
       "top": "102rem",
       "right": "-140rem"
