@@ -203,8 +203,21 @@ export default {
       this.maskedPhone = ''
       this.promoCode = ''
     },
+    onRequestError () {
+      this.$toast.error('Упс, произошла ошибка, попробуйте позже')
+      this.isSending = false
+    },
+    onRequestSuccess () {
+      this.$toast.success('Письмо отправлено')
+      this.isSending = false
+      this.resetForm()
+    },
     requestHandler (evt) {
-      console.log(evt)
+      if (evt.target.status === 200) {
+        this.onRequestSuccess()
+      } else {
+        this.onRequestError()
+      }
     },
     handleSubmit () {
       const request = new XMLHttpRequest()
@@ -213,20 +226,12 @@ export default {
       this.isSending = true
       const formData = JSON.stringify({...this.values, selectedProduct: this.selectedProduct.name })
       request.open('POST', sendMailUrl)
-      request.addEventListener('load', this.requestHandler)
       request.setRequestHeader('Content-Type', 'application/json');
-      request.addEventListener('error', () => {
-        this.$toast.error('Упс, произошла ошибка, попробуйте позже')
-        this.isSending = false
-      })
 
-      request.addEventListener('abort', () => {
-        this.$toast.error('Эммм... запрос отменен')
-        this.isSending = false
-      })
+      request.onload = this.requestHandler
+      request.onerror = this.onRequestError
 
       request.send(formData)
-
     }
   }
 }

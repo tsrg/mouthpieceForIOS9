@@ -5,7 +5,7 @@
     "style": "dark",
     "buttonsPosition": {
       "top": "102rem",
-      "right": "-140rem"
+      "right": "-135rem"
     },
     "buttons": [
       {
@@ -23,10 +23,10 @@
   {
     "src": "/slides/groot5.jpg",
     "alt": "2",
-    "style": "dark",
+    "style": "brown",
     "buttonsPosition": {
       "top": "64rem",
-      "right": "-140rem"
+      "right": "-168rem"
     },
     "buttons": [
       {
@@ -47,7 +47,7 @@
     "style": "light-red",
     "buttonsPosition": {
       "top": "97rem",
-      "right": "-80rem"
+      "right": "-66rem"
     },
     "buttons": [
       {
@@ -68,7 +68,7 @@
     "style": "yellow",
     "buttonsPosition": {
       "top": "102rem",
-      "right": "-140rem"
+      "right": "-125rem"
     },
     "buttons": [
       {
@@ -89,7 +89,7 @@
     "style": "light-red",
     "buttonsPosition": {
       "top": "97rem",
-      "right": "-280rem"
+      "right": "-290rem"
     },
     "buttons": [
       {
@@ -110,7 +110,7 @@
     "style": "patrick",
     "buttonsPosition": {
       "top": "97rem",
-      "right": "-80rem"
+      "right": "-100rem"
     },
     "buttons": [
       {

@@ -1,12 +1,16 @@
 <template>
   <div class="main-slider">
-    <swiper
-      :options="swiperOptions"
+    <carousel
+      ref="slider"
       class="main-slider__slider"
+      :auto="7000"
+      :watch-items="slides"
+      :loop="true"
     >
-      <swiper-slide
-        v-for="slide in slides"
+      <carousel-item
+        v-for="(slide, index) in slides"
         :key="slide.src"
+        :index="index"
         class="main-slider__slide"
         :class="slide.style ? `main-slider__slide--${slide.style}` : ''"
       >
@@ -25,80 +29,59 @@
                 :key="button.id"
                 @click.prevent="buttonClickHandler(button)"
                 class="main-slider__button"
+                :class="{ 'main-slider__button--buy': button.text === 'Заказать' }"
             >
               {{ button.text }}
             </button>
           </div>
         </div>
-      </swiper-slide>
-<!--      <div class="swiper-button-prev" slot="button-prev"></div>-->
-<!--      <div class="swiper-button-next" slot="button-next"></div>-->
-    </swiper>
+      </carousel-item>
+    </carousel>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { Carousel, CarouselItem } from 'vue-l-carousel'
+import 'hooper/dist/hooper.css';
 
 export default {
-  name: 'MainSlider',
+  name: 'MainSlider2',
   components: {
-    Swiper,
-    SwiperSlide
+    Carousel,
+    CarouselItem
   },
   props: {
     slides: Array
   },
-  data() {
-    return {
-      swiperOptions: {
-        // navigation: {
-        //   nextEl: '.swiper-button-next',
-        //   prevEl: '.swiper-button-prev'
-        // },
-        loop: 'true',
-        autoplay: { delay: 5000 }
-      }
-    }
-  },
   methods: {
     buttonClickHandler (button) {
-      if (button.goalId) {
-        // eslint-disable-next-line no-undef
-        ym(98552804,'reachGoal', button.goalId)
-      }
-
-      const section = button.link ? document.querySelector(button.link) : null
-
-      if (section) {
-        section.scrollIntoView({behavior: 'smooth'})
-      }
+      this.$emit('button:click', button)
     }
   }
 }
-
-// import 'swiper/css';
-// import 'swiper/css/effect-fade';
-// import 'swiper/css/navigation';
-// import 'swiper/css/autoplay';
-// import 'swiper/css/navigation';
-import 'swiper/dist/css/swiper.css'
 </script>
 
 <style lang="scss">
+.v-carousel-nav,
+.v-carousel-dots {
+  display: none;
+}
 
+.main-slider {
+  min-height: 100vh;
+}
 
 .main-slider__img {
   width: 100%;
-  height: auto;
 }
 
 .main-slider {
   width: 99.2vw;
 }
 .main-slider__slider {
-
+  height: unset;
 }
+
 .main-slider__slide {
   position: relative;
 }
@@ -115,73 +98,110 @@ import 'swiper/dist/css/swiper.css'
   position: absolute;
   display: flex;
   flex-direction: column;
-  margin: 10rem;
-
-  .main-slider__slide--patrick & {
-    flex-direction: row;
-  }
+  margin: 16rem;
 }
 
 .main-slider__button {
-  padding: 12rem 24rem;
-  border: 2rem solid hsla(160, 100%, 37%, 1);
-  border-radius: 14rem;
-  font-size: 24rem;
+  margin: 10rem;
+  padding: 28rem 90rem;
+  border: 2rem solid #eaa8a8;
   line-height: 1;
+  background-color: #ffffff;
+  color: #f84a4a;
+  border-radius: 14rem;
+  font-size: 42rem;
 
   .main-slider__slide--patrick & {
-    padding: 12rem 36rem;
     border: none;
-    color: #9b09d1;
+    color: #e469b7;
     background-color: white;
-    border-radius: 24rem;
-    font-size: 24rem;
-    font-weight: 600;
-    line-height: 1;
+
+    &:last-child {
+      color: white;
+      background-color: #e469b7;
+    }
   }
 
   .main-slider__slide--dark & {
-    padding: 12rem 24rem;
     border-radius: 14rem;
-    border: 2rem solid green;
-    font-size: 24rem;
+    border: 2rem solid #6ba21c;
     line-height: 1;
-    background-color: #353535;
-    color: white;
-    min-width: 259rem;
+    background-color: white;
+    color: #6ba21c;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #6ba21c;
+    }
   }
 
   .main-slider__slide--light-red & {
-    padding: 12rem 24rem;
     border-radius: 14rem;
     border: 2rem solid #eaa8a8;
-    font-size: 24rem;
     line-height: 1;
     background-color: #ffffff;
-    color: #f84a4a;
-    min-width: 259rem;
+    color: #da0e0e;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #da0e0e;
+      border: none;
+    }
+  }
+
+  .main-slider__slide--brown & {
+    border-radius: 14rem;
+    border: 2rem solid #93724f;
+    line-height: 1;
+    background-color: #ffffff;
+    color: #93724f;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #93724f;
+      border: none;
+    }
   }
 
   .main-slider__slide--blue & {
-    padding: 12rem 24rem;
     border-radius: 14rem;
     border: 2rem solid #042655;
-    font-size: 24rem;
     line-height: 1;
     background-color: #ffffff;
-    color: #0a1943;
-    min-width: 259rem;
+    color: #054daf;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #054daf;
+    }
+  }
+
+  .main-slider__slide--yellow & {
+    border-radius: 14rem;
+    border: 2rem solid #fa780e;
+    line-height: 1;
+    background-color: #ffffff;
+    color: #fa780e;
+    min-width: 340rem;
+
+    &:last-child {
+      color: white;
+      background-color: #fa780e;
+    }
   }
 }
 
-@media (orientation: landscape) {
   .main-slider {
     width: 100vw;
   }
 
   .main-slider__slide {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -189,8 +209,59 @@ import 'swiper/dist/css/swiper.css'
   }
 
   .main-slider__img {
-    width: auto;
-    height: 100vh;
+    width: 100%;
+    height: auto;
   }
+
+
+.v-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.v-carousel-items {
+  overflow: hidden;
+}
+.v-carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.v-carousel-dot {
+  cursor: pointer;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.v-carousel-dot.active {
+  background: #000;
+  cursor: default;
+}
+.v-carousel-nav {
+  cursor: pointer;
+  position: absolute;
+  line-height: 30px;
+  color: #FFF;
+  padding: 0 5px;
+  background: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  margin-top: -15px;
+}
+.v-carousel-nav.prev {
+  left: 0;
+}
+.v-carousel-nav.next {
+  right: 0;
+}
+
+
+.v-carousel-item {
+  width: 100%;
+  float: left;
 }
 </style>

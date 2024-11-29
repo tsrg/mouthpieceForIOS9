@@ -1,31 +1,31 @@
 <template>
   <div id="app">
     <main>
-      <MainSlider3
-          id="slider"
-          :slides="slides"
-          @button:click="sliderButtonClickHandler"
+      <MainSlider
+        id="slider"
+        :slides="slides"
+        @button:click="sliderButtonClickHandler"
       />
       <TheCatalog
-          id="catalog"
-          :products="products"
-          :visibleProductsCount="visibleProductsCount"
-          :isMoreButtonVisible="isMoreButtonVisible"
-          @product:select="selectProductHandler"
-          @show:more="showMore"
+        id="catalog"
+        :products="products"
+        :visibleProductsCount="visibleProductsCount"
+        :isMoreButtonVisible="isMoreButtonVisible"
+        @product:select="selectProductHandler"
+        @show:more="showMore"
       />
       <MainForm
-          id="form"
-          ref="form"
-          :selectedProduct="selectedProduct"
-          @product:remove="removeProductHandler"
+        id="form"
+        ref="form"
+        :selectedProduct="selectedProduct"
+        @product:remove="removeProductHandler"
       />
     </main>
   </div>
 </template>
 
 <script>
-import MainSlider3 from './components/MainSlider3.vue'
+import MainSlider from './components/MainSlider.vue'
 import TheCatalog from './components/TheCatalog.vue'
 import MainForm from './components/MainForm.vue'
 
@@ -34,7 +34,7 @@ const defaultVisibleProductsCount = 6
 export default {
   name: 'App',
   components: {
-    MainSlider3,
+    MainSlider,
     TheCatalog,
     MainForm
   },
