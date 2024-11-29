@@ -67,7 +67,6 @@
               class="form__input"
               @input="inputHandler"
             />
-    <!--        <div class="form__input-error">{{ errors.instagram }}</div>-->
           </div>
           <div class="form__submit-button-wr">
             <button class="form__submit-button" :disabled="invalid" type="submit">{{ buttonText }}</button>
@@ -81,13 +80,11 @@
         :style="`background-image: url(${productPhoto})`"
     >
       <transition name="fade">
-        <template v-if="selectedProduct?.name">
-          <div class="form__selected-model">
-            Модель: {{ selectedProduct.name }}
-            <button class="form__clear-select-button" @click="$emit('product:remove')">x</button>
-          </div>
-        </template>
+        <div v-if="selectedProduct?.name" class="form__selected-model">
+          Модель: {{ selectedProduct.name }}
+        </div>
       </transition>
+      <button v-if="selectedProduct?.name" class="form__clear-select-button" @click="$emit('product:remove')">x</button>
     </div>
     <section class="advantages">
       <div
@@ -293,14 +290,15 @@ export default {
 
 .form__clear-select-button {
   position: absolute;
-  top: 42%;
-  right: -80rem;
+  top: 30rem;
+  right: -30rem;
   transform: translateY(-50%);
   border: none;
   color: red;
   cursor: pointer;
   background-color: transparent;
-  font-size: 24rem;
+  font-size: 52rem;
+  font-weight: 100;
 }
 
 .form__input-wrapper {

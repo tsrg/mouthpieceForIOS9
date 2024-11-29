@@ -25,11 +25,12 @@
             :style="slide.buttonsPosition || ''"
           >
             <button
-                v-for="button in slide.buttons"
+                v-for="(button, index) in slide.buttons"
                 :key="button.id"
                 @click.prevent="buttonClickHandler(button)"
                 class="main-slider__button"
                 :class="{ 'main-slider__button--buy': button.text === 'Заказать' }"
+                :style="getStyle(button, index)"
             >
               {{ button.text }}
             </button>
@@ -56,6 +57,17 @@ export default {
   methods: {
     buttonClickHandler (button) {
       this.$emit('button:click', button)
+    },
+    getStyle(button) {
+      if (button.color && button.text === 'Заказать') {
+        return `background-color: ${button.color}; color: white; border: none;`
+      }
+
+      if (button.color) {
+        return `background-color: white; color: ${button.color}; border-color: ${button.color};`
+      }
+
+      return ''
     }
   }
 }

@@ -104,7 +104,7 @@
       }
     ]
   },
-{
+  {
     "src": "/slides/patrick2.jpg",
     "alt": "3",
     "style": "patrick",
@@ -122,6 +122,94 @@
         "id": "slide-3-button-buy",
         "text": "Заказать",
         "link": "#form"
+      }
+    ]
+  },
+  {
+    "src": "/slides/batman.jpg",
+    "alt": "3",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-100rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog",
+        "color": "#58c431"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form",
+        "color": "#58c431"
+      }
+    ]
+  },
+  {
+    "src": "/slides/spanch.jpg",
+    "alt": "3",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-70rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog",
+        "color": "#e2c909"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form",
+        "color": "#e2c909"
+      }
+    ]
+  },
+  {
+    "src": "/slides/alladin.jpg",
+    "alt": "3",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-70rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog",
+        "color": "#0091f2"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form",
+        "color": "#0091f2"
+      }
+    ]
+  },
+  {
+    "src": "/slides/fri.jpg",
+    "alt": "3",
+    "buttonsPosition": {
+      "top": "97rem",
+      "right": "-70rem"
+    },
+    "buttons": [
+      {
+        "id": "slide-3-button-catalog",
+        "text": "Каталог",
+        "link": "#catalog",
+        "color": "#e10c32"
+      },
+      {
+        "id": "slide-3-button-buy",
+        "text": "Заказать",
+        "link": "#form",
+        "color": "#e10c32"
       }
     ]
   }
